@@ -1,43 +1,79 @@
 import { useState } from "react";
 
 function App() {
-  const [message, setMessage] = useState("");
-  const [name, setName] = useState("");
+  const [page, setpage] = useState("");
+  const [patientName, setpatientName] = useState("");
 const [age, setAge] = useState("");
 const [mobile, setMobile] = useState("");
 
   return (
-    <div style={{ textAlign: "center", padding: "30px" }}>
-      <h1>🏥 Hospital Management System</h1>
+    <div style={{
+      width: "100%",
+      maxWidth: "1000px",
+      textAlign: "center",
+      whiteSpace: "nowrap",
+      margin: "30px auto",
+      padding: "30px",
+      border: "2px solid #ccc",
+      borderRadius: "5px",
+    }}
+    >
+      <h1> City Care Hospital Management System</h1>
 
-      <button onClick={() => setMessage("Patient Registration Page")}>
+      <button
+      style={{ marginTop: "20px",
+               marginBottom: "10px",
+                 color: "white",
+                 border: "none",
+                 padding: "9px 10px",
+                 borderRadius: "6px",
+                 cursor: "pointer",
+                  backgroundColor: "black",
+      }}
+      onClick={() => setpage("Patient Registration Page")}
+      >
         Patient Registration
       </button>
 
       <button
-        style={{ marginLeft: "10px" }}
-        onClick={() => setMessage("Doctor List Page")}
+        style={{ marginLeft: "10px",
+                 color: "white",
+                 border: "none",
+                 padding: "9px 10px",
+                 borderRadius: "6px",
+                 cursor: "pointer",
+                  backgroundColor: "black",
+        }}
+        onClick={() => setpage("Doctor Directory Page")}
       >
-        Doctor List
+        Doctor Directory
       </button>
 
       <button
-        style={{ marginLeft: "10px" }}
-        onClick={() => setMessage("Appointments Page")}
+        style={{ marginLeft: "10px",
+                 color: "white",
+                 border: "none",
+                 padding: "9px 10px",
+                 borderRadius: "6px",
+                 cursor: "pointer",
+                  backgroundColor: "black",
+         }}
+        onClick={() => setpage("Appointments Page")}
       >
         Appointments
       </button>
 
-      <h2 style={{ marginTop: "30px" }}>{message}</h2>
+      <h2 style={{ marginTop: "30px" }}>{page}</h2>
 
-      {message === "Patient Registration Page" && (
+      {page === "Patient Registration Page" && (
         <div style={{ marginTop: "20px" }}>
          <input
   type="text"
   placeholder="Enter Patient Name"
-  value={name}
-  onChange={(e) => setName(e.target.value)}
-  style={{ padding: "8px", margin: "5px" }}
+  value={patientName}
+  onChange={(e) => setpatientName(e.target.value)}
+  style={{ padding: "10px 10px", 
+   margin: "7px" }}
 />
 
         <input
@@ -45,14 +81,16 @@ const [mobile, setMobile] = useState("");
   placeholder="Enter Age"
   value={age}
   onChange={(e) => setAge(e.target.value)}
-  style={{ padding: "8px", margin: "5px" }}
+  style={{ padding: "10px 3px", 
+  margin: "5px" }}
 />
           <input
   type="text"
   placeholder="Enter Mobile Number"
   value={mobile}
   onChange={(e) => setMobile(e.target.value)}
-  style={{ padding: "8px", margin: "5px" }}
+  style={{ padding: "10px 10px", 
+           margin: "5px" }}
 />
 
           <br />
