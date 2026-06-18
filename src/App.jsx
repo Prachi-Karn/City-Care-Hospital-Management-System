@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 function App() {
   // Navigation state
@@ -9,6 +9,20 @@ function App() {
   const [patientAgeInput, setPatientAgeInput] = useState("");
   const [patientMobileInput, setPatientMobileInput] = useState("");
   const [registeredPatientsList, setRegisteredPatientsList] = useState([]);
+  useEffect(() => {
+  const savedPatients = localStorage.getItem("patients");
+
+  if (savedPatients) {
+    setRegisteredPatientsList(JSON.parse(savedPatients));
+  }
+}, []);
+
+useEffect(() => {
+  localStorage.setItem(
+    "patients",
+    JSON.stringify(registeredPatientsList)
+  );
+}, [registeredPatientsList]);
 
   // Doctor data
   const hospitalDoctors = [
@@ -25,6 +39,22 @@ function App() {
   const [appointmentDateInput, setAppointmentDateInput] = useState("");
   const [appointmentTimeInput, setAppointmentTimeInput] = useState("");
   const [allAppointmentsList, setAllAppointmentsList] = useState([]);
+
+useEffect(() => {
+  const savedAppointments = localStorage.getItem("appointments");
+
+  if (savedAppointments) {
+    setAllAppointmentsList(JSON.parse(savedAppointments));
+  }
+}, []);
+
+useEffect(() => {
+  localStorage.setItem(
+    "appointments",
+    JSON.stringify(allAppointmentsList)
+  );
+}, [allAppointmentsList]);
+
   const [doctorSearchTerm, setDoctorSearchTerm] = useState("");
 
   // Helper: Get matching doctors
