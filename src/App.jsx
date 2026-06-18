@@ -37,7 +37,7 @@ function App() {
   // Add new patient
   const addNewPatient = () => {
     if (!patientNameInput.trim() || !patientAgeInput || !patientMobileInput.trim()) {
-      alert("⚠️ कृपया सभी जानकारी भरें");
+      alert("⚠️ Please fill in all  details");
       return;
     }
 
@@ -50,7 +50,7 @@ function App() {
     };
 
     setRegisteredPatientsList([...registeredPatientsList, patientObj]);
-    alert("✅ रोगी सफलतापूर्वक जोड़ा गया");
+    alert("✅ Patient Registered successfully");
     
     // Clear inputs
     setPatientNameInput("");
@@ -61,7 +61,7 @@ function App() {
   // Remove patient
   const removePatient = (id) => {
     setRegisteredPatientsList(registeredPatientsList.filter((p) => p.patientId !== id));
-    alert("🗑️ रोगी हटा दिया गया");
+    alert("🗑️ Patient Deleted successfully");
   };
 
   // Add appointment
@@ -72,7 +72,7 @@ function App() {
       !appointmentDateInput ||
       !appointmentTimeInput
     ) {
-      alert("⚠️ कृपया सभी विवरण भरें");
+      alert("⚠️ Please fill  all appointment details");
       return;
     }
 
@@ -86,7 +86,7 @@ function App() {
     };
 
     setAllAppointmentsList([...allAppointmentsList, appointmentObj]);
-    alert("✅ अपॉइंटमेंट बुक हो गई");
+    alert("✅ Appointment booked successfully");
 
     setAppointmentPatientName("");
     setAppointmentSelectedDoctor("");
