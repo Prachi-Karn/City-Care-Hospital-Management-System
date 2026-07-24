@@ -65,7 +65,7 @@ useEffect(() => {
   );
 
   // Add new patient
-  const addNewPatient = () => {
+  const addNewPatient = async () => {
     if (!patientNameInput.trim() || !patientAgeInput || !patientMobileInput.trim()) {
       alert("⚠️ Please fill in all  details");
       return;
@@ -80,6 +80,13 @@ useEffect(() => {
     };
 
     setRegisteredPatientsList([...registeredPatientsList, patientObj]);
+    fetch("http://localhost:5000/patients", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(patientObj),
+});
     alert("✅ Patient Registered successfully");
     
     // Clear inputs
@@ -89,10 +96,17 @@ useEffect(() => {
   };
 
   // Remove patient
-  const removePatient = (id) => {
-    setRegisteredPatientsList(registeredPatientsList.filter((p) => p.patientId !== id));
-    alert("🗑️ Patient Deleted successfully");
-  };
+  const removePatient = async (id) => {
+  await fetch(`http://localhost:5000/patients/${id}`, {
+    method: "DELETE",
+  });
+
+  setRegisteredPatientsList(
+    registeredPatientsList.filter((p) => p.patientId !== id)
+  );
+
+  alert("Patient Deleted successfully");
+};
 
   // Add appointment
   const addAppointment = () => {
